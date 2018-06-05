@@ -2,6 +2,8 @@ package pl.lukasz.university.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Presence {
@@ -9,6 +11,9 @@ public class Presence {
     @Id
     private Long id;
     private String present;
+
+    @OneToMany(mappedBy = "presence")
+    private List<ConnectTable> connectTableList;
 
     public Presence() {
     }
@@ -27,5 +32,13 @@ public class Presence {
 
     public void setPresent(String present) {
         this.present = present;
+    }
+
+    public List<ConnectTable> getConnectTableList() {
+        return connectTableList;
+    }
+
+    public void setConnectTableList(List<ConnectTable> connectTableList) {
+        this.connectTableList = connectTableList;
     }
 }

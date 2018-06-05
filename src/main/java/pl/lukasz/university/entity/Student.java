@@ -1,8 +1,11 @@
 package pl.lukasz.university.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -11,8 +14,17 @@ public class Student {
     private String firstname;
     private String lastname;
     private LocalDate birthday;
+    @Length(min = 11, max = 11, message = "PESEL MUSI POSIADAĆ 11 ZNAKÓW")
     private long PESEL;
-    private String Semester;
+    @Length(min = 9, max = 9, message = "NUMER TELEFONU MUSI POSIADAĆ 9 ZNAKÓW")
+    private long telephoneNumber;
+
+    @OneToMany(mappedBy = "student")
+    private List<ConnectTable> connectTables;
+
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
 
     public Student() {
     }
@@ -57,12 +69,28 @@ public class Student {
         this.PESEL = PESEL;
     }
 
-    public String getSemester() {
-        return Semester;
+    public long getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setSemester(String semester) {
-        Semester = semester;
+    public void setTelephoneNumber(long telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public List<ConnectTable> getConnectTables() {
+        return connectTables;
+    }
+
+    public void setConnectTables(List<ConnectTable> connectTables) {
+        this.connectTables = connectTables;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
 

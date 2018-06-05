@@ -1,7 +1,7 @@
 package pl.lukasz.university.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -12,6 +12,13 @@ public class Teacher {
     private String lastname;
     private long contactNumber;
     private String email;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Subject> subjects;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public Teacher() {
     }
@@ -54,5 +61,21 @@ public class Teacher {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

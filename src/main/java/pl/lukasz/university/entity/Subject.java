@@ -1,12 +1,12 @@
 package pl.lukasz.university.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-public class Schedule {
+public class Subject {
     @Id
     private Long id;
     private String subject;
@@ -14,7 +14,14 @@ public class Schedule {
     private short lenght;
     private String address;
 
-    public Schedule() {
+    @ManyToOne
+    @JoinColumn(name = "teacherId")
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "subject")
+    private List<ConnectTable> connectTables;
+
+    public Subject() {
     }
 
     public Long getId() {
@@ -55,5 +62,21 @@ public class Schedule {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<ConnectTable> getConnectTables() {
+        return connectTables;
+    }
+
+    public void setConnectTables(List<ConnectTable> connectTables) {
+        this.connectTables = connectTables;
     }
 }
