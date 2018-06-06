@@ -1,0 +1,48 @@
+.newnav {
+    background-color: darkolivegreen;
+    overflow: hidden;
+    margin-left: 0px;
+}
+
+.newnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+
+    font-size: 17px;
+}
+
+.newnav a:hover {
+    background-color: goldenrod;
+    text-decoration: none;
+    color: #f2f2f2;
+
+}
+
+body {
+    margin: 0px;
+}
+
+.studentstable {
+    margin-top: 3%;
+}
+
+.btn.btn-info.students {
+    margin-top: -5%;
+}
+
+.btn.btn-light.students {
+    margin-top: -5%;
+    background-color: goldenrod;
+    border-color: goldenrod;
+    color: white;
+}
+
+.btn.btn-danger.students {
+    margin-top: -5%;
+}
+
+
+

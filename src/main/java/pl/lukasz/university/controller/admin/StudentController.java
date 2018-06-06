@@ -1,17 +1,26 @@
 package pl.lukasz.university.controller.admin;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.lukasz.university.service.StudentService;
 
 @RequestMapping(value = "/students")
 @Controller
 public class StudentController {
 
+    private StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @RequestMapping
-    public String getAllStudents()
+    public String getAllStudents(Model model)
     {
-        return "nothing for now";
+        model.addAttribute("students", studentService.findAllByIdOrderByLastnameAsc());
+        return "admin/students";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)

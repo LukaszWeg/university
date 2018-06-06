@@ -1,4 +1,4 @@
-package pl.lukasz.university.Repository;
+package pl.lukasz.university.repository;
 
 import org.springframework.stereotype.Repository;
 
