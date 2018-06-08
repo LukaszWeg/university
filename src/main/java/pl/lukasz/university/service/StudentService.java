@@ -9,4 +9,6 @@ import java.util.List;
 public interface StudentService {
 
     List<Student> findAllByIdOrderByLastnameAsc();
+
+    void checkAndSave(Student student);
 }

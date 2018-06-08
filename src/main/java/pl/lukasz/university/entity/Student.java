@@ -1,6 +1,5 @@
 package pl.lukasz.university.entity;
 
-import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,11 +13,10 @@ public class Student {
     private Long id;
     private String firstname;
     private String lastname;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthday;
-    @Length(min = 11, max = 11, message = "PESEL MUSI POSIADAĆ 11 ZNAKÓW")
-    private long PESEL;
-    @Length(min = 9, max = 9, message = "NUMER TELEFONU MUSI POSIADAĆ 9 ZNAKÓW")
-    private long telephoneNumber;
+    private Long PESEL;
+    private Long telephoneNumber;
 
     @OneToMany(mappedBy = "student")
     private List<ConnectTable> connectTables;
@@ -62,19 +60,19 @@ public class Student {
         this.birthday = birthday;
     }
 
-    public long getPESEL() {
+    public Long getPESEL() {
         return PESEL;
     }
 
-    public void setPESEL(long PESEL) {
+    public void setPESEL(Long PESEL) {
         this.PESEL = PESEL;
     }
 
-    public long getTelephoneNumber() {
+    public Long getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(long telephoneNumber) {
+    public void setTelephoneNumber( Long telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 

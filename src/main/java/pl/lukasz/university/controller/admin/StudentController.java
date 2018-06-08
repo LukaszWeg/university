@@ -2,10 +2,14 @@ package pl.lukasz.university.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.lukasz.university.entity.Student;
 import pl.lukasz.university.service.StudentService;
+
+import javax.validation.Valid;
 
 @RequestMapping(value = "/students")
 @Controller
@@ -32,7 +36,11 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveStudent() {
+    public String saveStudent(@Valid @ModelAttribute("newStudent") Student student, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "admin/studentForm";
+        }
+        studentService.checkAndSave(student);
         return "redirect:/students";
     }
 
