@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstname;
     private String lastname;

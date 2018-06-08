@@ -8,7 +8,7 @@
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 30px 16px;
+    padding: 24px 16px;
     text-decoration: none;
 
     font-size: 17px;
@@ -22,11 +22,12 @@
 }
 
 body {
-    margin: 0px;
+    background-image: url("../images/background.jpg");
+
 }
 
 .studentstable {
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 .btn.btn-info.students {
@@ -40,9 +41,45 @@ body {
     color: white;
 }
 
+.btn.btn-info.addstudent {
+    margin-bottom: 1%;
+    float: right;
+}
+
 .btn.btn-danger.students {
     margin-top: -5%;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.mainTextStudentForm {
+    margin-top: 1%;
+    color: gold;
+}
+
+.studentForm {
+    display: flex;
+    justify-content: center;
+}
+
+.form-control.studentForm {
+
+    width: 60%;
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.btn.btn-info.studentForm {
+    float: right;
+    margin-right: 20%;
+    margin-top: 1%;
+}
+
+
 
 
 
