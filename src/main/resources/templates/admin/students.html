@@ -21,9 +21,9 @@
         <tr>
             <td th:text="${student.getFirstname() + ' ' + student.getLastname() }">John</td>
             <td th:text="${student.getPESEL()}"></td>
-            <td><button class="btn btn-info students" >Dane</button> </td>
-            <td><button class="btn btn-light students" >Edytuj</button> </td>
-            <td><a href="xD" onclick="return confirm('Czy napewno chcesz usunąć tego studenta?')"> <button class="btn btn-danger students" >Usuń</button></a> </td>
+            <td><a th:href="@{'/students/' + ${student.id}}"><button class="btn btn-info students" >Dane</button></a> </td>
+            <td><a th:href="@{'/students/edit/' + ${student.id}}"><button class="btn btn-light students" >Edytuj</button> </a></td>
+            <td><a th:href="@{'/students/delete/' + ${student.id}}" onclick="return confirm('Czy napewno chcesz usunąć tego studenta?')"> <button class="btn btn-danger students" >Usuń</button></a> </td>
 
         </tr>
 

@@ -10,6 +10,7 @@ import pl.lukasz.university.service.StudentService;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -36,5 +37,20 @@ public class StudentServiceImpl implements StudentService {
         student.setRole(role);
         studentRepository.save(student);
 
+    }
+
+    @Override
+    public void delete(Long id) {
+        Student student = findById(id);
+        studentRepository.delete(student);
+    }
+
+    @Override
+    public Student findById(Long id) {
+        Optional<Student> student = studentRepository.findById(id);
+        if(!student.isPresent()) {
+            throw new RuntimeException();
+        }
+        return student.get();
     }
 }

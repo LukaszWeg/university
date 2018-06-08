@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container-fluid">
+
+
+    <p th:text="'Imie i nazwisko: ' + ${student.firstname} + ' ' + ${student.lastname}" class="student" style="margin-top: 1%" ></p>
+    <p th:text="'Pesel: ' + ${student.PESEL}" class="student" ></p>
+    <p th:text="'Numer telefonu: ' + ${student.telephoneNumber}" class="student" ></p>
+    <p th:text="'Data urodzin: ' + ${student.birthday}" class="student" ></p>
+
+</div>
+</body>
+</html>

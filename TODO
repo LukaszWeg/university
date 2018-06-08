@@ -1,3 +1,13 @@
 todo
-- tabela łącząca student subject presence
-- łączeine tabeli
+ADMIN
+- student
+    dane (czesc)
+- Nauczycie
+    dodaj
+    edytowanie
+    usuwanie
+    dane (czesc)
+- Zajecia
+    dodaj
+    edytowanie
+    usuwanie

@@ -11,4 +11,8 @@ public interface StudentService {
     List<Student> findAllByIdOrderByLastnameAsc();
 
     void checkAndSave(Student student);
+
+    void delete(Long id);
+
+    Student findById(Long id);
 }

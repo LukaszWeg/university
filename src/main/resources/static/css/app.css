@@ -31,11 +31,10 @@ body {
 }
 
 .btn.btn-info.students {
-    margin-top: -5%;
+    margin: 1px;
 }
 
 .btn.btn-light.students {
-    margin-top: -5%;
     background-color: goldenrod;
     border-color: goldenrod;
     color: white;
@@ -47,12 +46,14 @@ body {
 }
 
 .btn.btn-danger.students {
-    margin-top: -5%;
+
 }
 
 .center {
     display: flex;
+
     justify-content: center;
+
 }
 
 .mainTextStudentForm {
@@ -77,6 +78,14 @@ body {
     float: right;
     margin-right: 20%;
     margin-top: 1%;
+}
+
+p.student{
+    margin-top: -1%;
+    font-size: 21px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
 }
 
 
