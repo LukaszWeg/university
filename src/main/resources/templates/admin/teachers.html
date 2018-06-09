@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container-fluid">
+    <div class="studentstable">
+        <a th:href="@{'teachers/add'}"><button class="btn btn-info addstudent">Dodaj nauczyciela</button></a>
+        <table class="table table-dark table-hover">
+            <thead>
+            <tr>
+                <th>Imie i nazwisko</th>
+                <th>Email</th>
+                <th>Dane</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>
+            </thead>
+            <tbody th:each="teacher: ${teachers}">
+            <tr>
+                <td th:text="${teacher.getFirstname() + ' ' + teacher.getLastname() }">John</td>
+                <td th:text="${teacher.getEmail()}"></td>
+                <td><a th:href="@{'/teachers/' + ${teacher.id}}"><button class="btn btn-info students" >Dane</button></a> </td>
+                <td><a th:href="@{'/teachers/edit/' + ${teacher.id}}"><button class="btn btn-light students" >Edytuj</button> </a></td>
+                <td><a th:href="@{'/teachers/delete/' + ${teacher.id}}" onclick="return confirm('Czy napewno chcesz usunąć tego studenta?')"> <button class="btn btn-danger students" >Usuń</button></a> </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>

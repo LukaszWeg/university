@@ -31,9 +31,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void checkAndSave(Student student) {
-        Set<Role> roles = new HashSet<>();
         Role role = roleService.findByName("Student");
-        roles.add(role);
         student.setRole(role);
         studentRepository.save(student);
 

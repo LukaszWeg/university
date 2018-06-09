@@ -1,13 +1,11 @@
 todo
 ADMIN
-- student
-    dane (czesc)
-- Nauczycie
-    dodaj
-    edytowanie
-    usuwanie
-    dane (czesc)
+
 - Zajecia
     dodaj
     edytowanie
     usuwanie
+
+NA KONIEC:
+    dane (uczen)
+    dane (nauczyciel)
