@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container-fluid" >
+
+    <form th:object="${subject}" th:action="@{/subjects/add}" method="post" class="studentForm">
+        <div class="form-group">
+            <h1 class="mainTextStudentForm">Dodaj lub edytuj zajęcia</h1>
+            <label for="subject" class="center">Nazwa przedmiotu</label>
+            <input type="text" th:field="*{subject}" id="subject" class="form-control studentForm"/>
+            <label for="address" class="center">Adres</label>
+            <select th:field="*{address}" id="address" class="form-control studentForm">
+                <option th:value="'Rzeszów, sala nr.1'"> Sala nr 1</option>
+                <option th:value="'Rzeszów, sala nr.2'"> Sala nr 2</option>
+                <option th:value="'Rzeszów, sala nr.3'"> Sala nr 3</option>
+                <option th:value="'Rzeszów, sala nr.4'"> Sala nr 4</option>
+            </select>
+            <label for="date" class="center">Data</label>
+            <input type="datetime-local" th:field="*{date}" id="date" class="form-control studentForm"/>
+            <label for="lenght" class="center">Długość</label>
+            <select th:field="*{lenght}" id="lenght" class="form-control studentForm">
+                <option th:value="45">45 minut</option>
+                <option th:value="90">90 minut</option>
+                <option th:value="135">135 minut</option>
+            </select>
+            <label for="prowadzacy" class="center">Prowadzący</label>
+            <select th:field="*{teacherEmail}" class="form-control studentForm" id="prowadzacy">
+                <option th:each="teacher : ${teachers}" th:value="${teacher.email}" th:text="${teacher.firstname} + ' ' + ${teacher.lastname}"></option>
+            </select>
+            <button type="submit" class="btn btn-info studentForm">Wyślij</button>
+        </div>
+    </form>
+
+
+</div>
+</body>
+</html>

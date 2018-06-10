@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container-fluid">
+    <div class="studentstable">
+        <a th:href="@{'subjects/add'}"><button class="btn btn-info addstudent">Dodaj zajęcia</button></a>
+        <table class="table table-dark table-hover">
+            <thead>
+            <tr>
+                <th>Nazwa przedmiotu</th>
+                <th>Data</th>
+                <th>Długość zajęć</th>
+                <th>Adres</th>
+                <th>Prowadzący</th>
+                <th>Usuń</th>
+            </tr>
+            </thead>
+            <tbody th:each="subject: ${subjects}">
+            <tr>
+                <td th:text="${subject.subject}">John</td>
+                <td th:text="${#temporals.format(subject.date, 'dd-MM-yyy, HH:mm')}"></td>
+                <td th:text="${subject.lenght} + ' minut'"> </td>
+                <td th:text="${subject.address}"></td>
+                <td th:text="${subject.teacher.firstname} + ' ' + ${subject.teacher.lastname}"></td>
+                <td><a th:href="@{'/subjects/delete/' + ${subject.id}}" onclick="return confirm('Czy napewno chcesz usunąć tego studenta?')"> <button class="btn btn-danger students" >Usuń</button></a> </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>
