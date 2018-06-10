@@ -1,17 +1,19 @@
 package pl.lukasz.university.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 public class Subject {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String subject;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime date;
-    private short lenght;
+    private Short lenght;
     private String address;
 
     @ManyToOne
@@ -48,11 +50,11 @@ public class Subject {
         this.date = date;
     }
 
-    public short getLenght() {
+    public Short getLenght() {
         return lenght;
     }
 
-    public void setLenght(short lenght) {
+    public void setLenght(Short lenght) {
         this.lenght = lenght;
     }
 
