@@ -10,5 +10,6 @@ import java.util.List;
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
     List<Teacher> findAllByOrderByLastnameAsc();
+    Teacher findByEmail(String email);
 
 }
