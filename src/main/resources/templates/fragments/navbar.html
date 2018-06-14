@@ -4,8 +4,13 @@
 </head>
 <body>
 <nav th:fragment="navbar" class="newnav" >
-    <a href="/subjects" >sub </a>
-<a href="/students" >stud </a>
-<a href="/teachers" >teac </a> </nav>
+    <a th:href="@{/}">Strona główna</a>
+    <a sec:authorize="hasAuthority('Admin')" th:href="@{/students}">Studenci</a>
+    <a sec:authorize="hasAuthority('Admin')" th:href="@{/subjects}">Zajęcia</a>
+    <a sec:authorize="hasAuthority('Admin')" th:href="@{/teachers}">Nauczyciela</a>
+    <a sec:authorize="hasAuthority('Teacher')" th:href="@{/mysubjects}">Zajęcia</a>
+    <a sec:authorize="hasAuthority('Student')" th:href="@{/schedule}">Zajęcia</a>
+    <a sec:authorize="isAuthenticated()"  th:href="@{/logout}" style="float: right">Wyloguj</a>
+</nav>
 </body>
 </html>
