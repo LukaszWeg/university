@@ -27,9 +27,6 @@ public class UniversityApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        User user = new User();
-//        user.setUsername("Admin");
-//        user.setPassword(passwordEncoder.encode("Admin"));
-//        userRepository.save(user);
+
     }
 }

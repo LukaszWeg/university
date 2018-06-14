@@ -5,6 +5,7 @@ import pl.lukasz.university.controller.admin.NewSubjectForm;
 import pl.lukasz.university.entity.ConnectTable;
 import pl.lukasz.university.entity.Student;
 import pl.lukasz.university.entity.Subject;
+import pl.lukasz.university.entity.Teacher;
 import pl.lukasz.university.repository.SubjectRepository;
 import pl.lukasz.university.repository.TeacherRepository;
 import pl.lukasz.university.service.SubjectService;
@@ -54,4 +55,8 @@ public class SubjectServiceImpl implements SubjectService {
         return subject.get();
     }
 
+    @Override
+    public List<Subject> findByTeacherOrderByDateDesc(Teacher teacher) {
+        return subjectRepository.findByTeacherOrderByDateDesc(teacher);
+    }
 }

@@ -21,7 +21,11 @@ public class HomeController {
         }
     }
 
-
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homePage()
+    {
+        return "home";
+    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(Authentication authentication, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
@@ -30,6 +34,6 @@ public class HomeController {
             new SecurityContextLogoutHandler().logout(httpServletRequest,httpServletResponse,authentication);
         }
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 }

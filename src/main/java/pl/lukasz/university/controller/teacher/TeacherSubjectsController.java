@@ -1,5 +1,6 @@
 package pl.lukasz.university.controller.teacher;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.lukasz.university.entity.ConnectTable;
 import pl.lukasz.university.entity.Student;
 import pl.lukasz.university.entity.Subject;
+import pl.lukasz.university.entity.Teacher;
 import pl.lukasz.university.repository.ConnectTableRepository;
+import pl.lukasz.university.repository.TeacherRepository;
 import pl.lukasz.university.service.StudentService;
 import pl.lukasz.university.service.SubjectService;
 
@@ -23,11 +26,20 @@ public class TeacherSubjectsController {
     private SubjectService subjectService;
     private StudentService studentService;
     private ConnectTableRepository connectTableRepository;
+    private TeacherRepository teacherRepository;
 
-    public TeacherSubjectsController(SubjectService subjectService, StudentService studentService, ConnectTableRepository connectTableRepository) {
+    public TeacherSubjectsController(SubjectService subjectService, StudentService studentService, ConnectTableRepository connectTableRepository, TeacherRepository teacherRepository) {
         this.subjectService = subjectService;
         this.studentService = studentService;
         this.connectTableRepository = connectTableRepository;
+        this.teacherRepository = teacherRepository;
+    }
+
+    @RequestMapping()
+    public String getMySubjects(Model model, Authentication authentication) {
+        Teacher teacher = teacherRepository.findByEmail(authentication.getName());
+        model.addAttribute("subjects", subjectService.findByTeacherOrderByDateDesc(teacher));
+        return "teacher/mysubjects";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

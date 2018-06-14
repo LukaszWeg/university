@@ -41,6 +41,7 @@ public class WebSecurityConfigurerAdapterConfig extends WebSecurityConfigurerAda
                 .antMatchers(FOR_ADMIN).hasAuthority("Admin")
                 .antMatchers(FOR_STUDENT).hasAuthority("Student")
                 .antMatchers("/mysubjects/**").hasAuthority("Teacher")
+                .antMatchers("/").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

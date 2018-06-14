@@ -51,12 +51,11 @@ public class TeacherServiceImpl implements TeacherService {
         role.add(roleRepository.findByName("Teacher"));
         User user = new User();
         user.setTeacher(teacher);
-        user.setUsername(teacher.getFirstname()+teacher.getLastname());
+        user.setUsername(teacher.getEmail());
         user.setPassword(passwordEncoder.encode(teacher.getContactNumber().toString()));
         user.setRole(role);
-        userRepository.save(user);
         teacherRepository.save(teacher);
-
+        userRepository.save(user);
     }
 
     @Override

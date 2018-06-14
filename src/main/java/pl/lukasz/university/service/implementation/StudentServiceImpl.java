@@ -43,11 +43,11 @@ public class StudentServiceImpl implements StudentService {
         role.add(roleService.findByName("Student"));
         User user = new User();
         user.setStudent(student);
-        user.setUsername(student.getFirstname()+student.getLastname());
+        user.setUsername(student.getTelephoneNumber().toString());
         user.setPassword(passwordEncoder.encode(student.getPESEL().toString()));
         user.setRole(role);
-        userRepository.save(user);
         studentRepository.save(student);
+        userRepository.save(user);
     }
 
     @Override
