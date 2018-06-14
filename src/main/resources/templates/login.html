@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<div class="container-fluid">
+    <form  th:action="@{/login}" method="post" class="studentForm" style="margin-top: 10%">
+
+        <div class="form-group" ><h1 class="display-4">Logowanie</h1>
+            <label for="username">Podaj login:</label>
+            <input id="username" name="username" type="text" class="form-control" />
+            <label for="password">Podaj hasło:</label>
+            <input id="password" name="password" type="password" class="form-control"/>
+            <p></p>
+            <input class="btn btn-info" type="submit" name="action" value="Zaloguj" align="right" />
+        </div>
+    </form>
+</div>
+</body>
+</html>
