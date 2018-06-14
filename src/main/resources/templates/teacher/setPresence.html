@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container-fluid" >
+    <form th:object="${newPresence}" th:action="@{''}" method="post" class="studentForm">
+        <div class="form-group">
+            <h1 class="mainTextStudentForm">Ustaw obecność</h1>
+            <input type="hidden" th:field="*{id}"/>
+            <select th:field="*{presence}" class="form-control studentForm" >
+                <option th:value="obecny">obecny</option>
+                <option th:value="nieobecny">nieobecny</option>
+            </select>
+            <button class="btn btn-info studentForm" type="submit">Ustaw</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
