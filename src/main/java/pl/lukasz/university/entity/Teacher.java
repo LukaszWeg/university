@@ -10,15 +10,13 @@ public class Teacher {
     private Long id;
     private String firstname;
     private String lastname;
-    private long contactNumber;
+    private Long contactNumber;
     private String email;
 
     @OneToMany(mappedBy = "teacher")
     private List<Subject> subjects;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+
 
     public Teacher() {
     }
@@ -47,11 +45,11 @@ public class Teacher {
         this.lastname = lastname;
     }
 
-    public long getContactNumber() {
+    public Long getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(long contactNumber) {
+    public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
     }
 
@@ -71,11 +69,5 @@ public class Teacher {
         this.subjects = subjects;
     }
 
-    public Role getRole() {
-        return role;
-    }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }

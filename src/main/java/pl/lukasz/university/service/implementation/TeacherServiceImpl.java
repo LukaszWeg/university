@@ -1,10 +1,13 @@
 package pl.lukasz.university.service.implementation;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.lukasz.university.entity.Role;
 import pl.lukasz.university.entity.Teacher;
+import pl.lukasz.university.entity.User;
 import pl.lukasz.university.repository.RoleRepository;
 import pl.lukasz.university.repository.TeacherRepository;
+import pl.lukasz.university.repository.UserRepository;
 import pl.lukasz.university.service.TeacherService;
 
 import java.util.HashSet;
@@ -17,10 +20,14 @@ public class TeacherServiceImpl implements TeacherService {
 
     private TeacherRepository teacherRepository;
     private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
 
-    public TeacherServiceImpl(TeacherRepository teacherRepository, RoleRepository roleRepository) {
+    public TeacherServiceImpl(TeacherRepository teacherRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.teacherRepository = teacherRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -40,8 +47,14 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void checkAndSave(Teacher teacher) {
-        Role role = roleRepository.findByName("Teacher");
-        teacher.setRole(role);
+        Set<Role> role = new HashSet<>();
+        role.add(roleRepository.findByName("Teacher"));
+        User user = new User();
+        user.setTeacher(teacher);
+        user.setUsername(teacher.getFirstname()+teacher.getLastname());
+        user.setPassword(passwordEncoder.encode(teacher.getContactNumber().toString()));
+        user.setRole(role);
+        userRepository.save(user);
         teacherRepository.save(teacher);
 
     }

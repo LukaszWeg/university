@@ -21,9 +21,10 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<ConnectTable> connectTables;
 
-    @ManyToOne
-    @JoinColumn(name = "roleId")
-    private Role role;
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private User user;
+
+
 
     public Student() {
     }
@@ -84,12 +85,12 @@ public class Student {
         this.connectTables = connectTables;
     }
 
-    public Role getRole() {
-        return role;
+    public User getUser() {
+        return user;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 
