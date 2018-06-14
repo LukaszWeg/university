@@ -4,8 +4,9 @@ import javax.persistence.*;
 
 @Entity
 public class ConnectTable {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String presence;
 
     @ManyToOne
     @JoinColumn(name = "studentId")
@@ -15,9 +16,6 @@ public class ConnectTable {
     @JoinColumn(name = "subjectId")
     private Subject subject;
 
-    @ManyToOne
-    @JoinColumn(name = "presenceId")
-    private Presence presence;
 
     public ConnectTable() {
     }
@@ -46,13 +44,11 @@ public class ConnectTable {
         this.subject = subject;
     }
 
-    public Presence getPresence() {
+    public String getPresence() {
         return presence;
     }
 
-    public void setPresence(Presence presence) {
+    public void setPresence(String presence) {
         this.presence = presence;
     }
-
-
 }

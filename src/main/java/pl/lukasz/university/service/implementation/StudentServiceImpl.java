@@ -19,6 +19,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
     private RoleService roleService;
 
+
     public StudentServiceImpl(StudentRepository studentRepository, RoleService roleService) {
         this.studentRepository = studentRepository;
         this.roleService = roleService;
@@ -34,7 +35,6 @@ public class StudentServiceImpl implements StudentService {
         Role role = roleService.findByName("Student");
         student.setRole(role);
         studentRepository.save(student);
-
     }
 
     @Override

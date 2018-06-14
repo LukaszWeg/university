@@ -12,4 +12,8 @@ public interface SubjectService {
         List<Subject> findAllByOrderByDateAsc();
 
         void delete(Long id);
+
+        Subject findById(Long id);
+
+
 }

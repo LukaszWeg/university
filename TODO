@@ -1,11 +1,13 @@
 todo
 ADMIN
 
-- Zajecia
-    dodaj
-    edytowanie
-    usuwanie
-
 NA KONIEC:
     dane (uczen)
     dane (nauczyciel)
+
+NAUCZYCIEL
+    moze sprawdzic jakie ma zajecia
+    moze ustawic obecnosc dla uczniow
+
+    UCZEN
+    moze sprawawdzic swoje zajecia i obecnosci
