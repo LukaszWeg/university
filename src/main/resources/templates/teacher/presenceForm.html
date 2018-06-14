@@ -11,8 +11,8 @@
             <thead>
             <tr>
                 <th>Imie i nazwisko</th>
+                <th>Sprawdź</th>
                 <th>Obecność</th>
-
             </tr>
             </thead>
             <tbody th:each="student: ${students}">
@@ -21,6 +21,7 @@
                 <td>
                     <a th:href="@{'/mysubjects/' + ${subject.id} + '/' + ${student.id}}"><button class="btn btn-info">Obecność</button> </a>
                 </td>
+                <td th:each="presenc : ${presence}" th:if="${presenc.student.id} eq ${student.id}" th:text="${presenc.presence}"></td>
             </tr>
 
             </tbody >

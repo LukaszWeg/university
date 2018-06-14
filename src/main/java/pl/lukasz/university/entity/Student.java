@@ -18,7 +18,7 @@ public class Student {
     private Long PESEL;
     private Long telephoneNumber;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<ConnectTable> connectTables;
 
     @ManyToOne

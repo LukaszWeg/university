@@ -33,9 +33,10 @@ public class TeacherSubjectsController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String presence(Model model, @PathVariable ("id") Long id)
     {
-
+        Subject subject = subjectService.findById(id);
         model.addAttribute("students", studentService.findAllByIdOrderByLastnameAsc());
         model.addAttribute("subject", subjectService.findById(id));
+        model.addAttribute("presence", connectTableRepository.findBySubject(subject));
         return "teacher/presenceForm";
     }
 
