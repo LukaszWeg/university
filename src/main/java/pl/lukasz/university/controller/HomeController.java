@@ -21,11 +21,7 @@ public class HomeController {
         }
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage()
-    {
-        return "redirect:/login";
-    }
+
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(Authentication authentication, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
