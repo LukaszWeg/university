@@ -15,4 +15,6 @@ public interface StudentService {
     void delete(Long id);
 
     Student findById(Long id);
+
+    Student findByTelephoneNumber(Long telephoneNumber);
 }

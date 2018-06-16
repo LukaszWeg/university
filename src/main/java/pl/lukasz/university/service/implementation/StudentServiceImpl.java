@@ -64,4 +64,9 @@ public class StudentServiceImpl implements StudentService {
         }
         return student.get();
     }
+
+    @Override
+    public Student findByTelephoneNumber(Long telephoneNumber) {
+        return studentRepository.findByTelephoneNumber(telephoneNumber);
+    }
 }
